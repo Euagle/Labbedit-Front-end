@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
-import PlaylistCard from "../../components/PlaylistCard";
+import PostCard from "../../components/PlaylistCard";
 import { BASE_URL, TOKEN_NAME } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { goToLoginPage } from "../../routes/coordinator";
@@ -11,10 +11,10 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   const context = useContext(GlobalContext);
-  const { playlists, fetchPlaylists } = context;
+  const { posts, fetchPosts } = context;
 
   const [isLoading, setIsLoading] = useState(false)
-  const [playlistName, setPlaylistName] = useState("")
+  const [postsName, setPostsName] = useState("")
 
   useEffect(() => {
     const token = window.localStorage.getItem(TOKEN_NAME);
@@ -22,11 +22,11 @@ export default function HomePage() {
     if (!token) {
       goToLoginPage(navigate);
     } else {
-      fetchPlaylists();
+      fetchPosts();
     }
   }, []);
 
-  const createPlaylist = async (e) => {
+  const createPosts = async (e) => {
     e.preventDefault()
 
     setIsLoading(true)
@@ -41,14 +41,14 @@ export default function HomePage() {
       };
 
       const body = {
-        name: playlistName
+        name: postsName
       }
 
       await axios.post(BASE_URL + "/posts", body, config);
 
-      setPlaylistName("");
+      setPostsName("");
       setIsLoading(false)
-      fetchPlaylists()
+      fetchPosts()
     } catch (error) {
       console.error(error?.response?.data);
       window.alert(error?.response?.data)
@@ -59,24 +59,29 @@ export default function HomePage() {
     <main>
       <Header />
       <section>
-        <form onSubmit={createPlaylist}>
-          <h1>Criar playlist</h1>
+        <form onSubmit={createPosts}>
+          <h1>Criar post</h1>
           <section>
             <label>Nome</label>
-            <input value={playlistName} onChange={(e) => setPlaylistName(e.target.value)} />
+            <input value={postsName} onChange={(e) => setPostsName(e.target.value)} />
           </section>
           <button disabled={isLoading}>Criar</button>
         </form>
       </section>
 
       <hr />
-      <h1>Playlists</h1>
+      <h1>Posts</h1>
 
       <section>
-        {playlists.map((playlist) => {
-          return <PlaylistCard key={playlist.id} playlist={playlist} />;
+        { posts.map((post) => {
+          return <PostCard key={post.id} post={post} />;
         })}
       </section>
     </main>
   );
+
+  
 }
+
+
+
