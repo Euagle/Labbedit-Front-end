@@ -3,11 +3,11 @@ import { useContext, useState } from "react";
 import { BASE_URL, TOKEN_NAME } from "../constants/url";
 import { GlobalContext } from "../contexts/GlobalContext";
 
-export default function PlaylistCard(props) {
-  const { playlist } = props;
+export default function PostCard(props) {
+  const { posts } = props;
 
   const context = useContext(GlobalContext);
-  const { fetchPlaylists } = context;
+  const { fetchPosts } = context;
 
   const [isLoading, setIsLoading] = useState(false)
 
@@ -27,10 +27,10 @@ export default function PlaylistCard(props) {
         like: true
       }
 
-      await axios.put(BASE_URL + `/posts/${playlist.id}/like`, body, config);
+      await axios.put(BASE_URL + `/posts/${posts.id}/like`, body, config);
 
       setIsLoading(false)
-      fetchPlaylists()
+      fetchPosts()
     } catch (error) {
       console.error(error?.response?.data);
       window.alert(error?.response?.data)
@@ -40,16 +40,16 @@ export default function PlaylistCard(props) {
   return (
     <article>
       <h2>
-        {playlist.name}
+        {posts.name}
 
         <span onClick={like} style={{ cursor: "pointer" }}>
-          {" "}👍 {playlist.likes}
+          {" "}👍 {posts.likes}
         </span>
       </h2>
 
-      <p>criada por {playlist.creator.name}</p>
+      <p>criada por {posts.creator.name}</p>
       <div>
-      <p>{playlist.posts}</p>
+      <p>{posts.posts}</p>
 
       </div>
 
@@ -59,3 +59,5 @@ export default function PlaylistCard(props) {
     </article>
   );
 }
+
+

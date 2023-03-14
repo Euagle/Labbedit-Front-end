@@ -1,11 +1,10 @@
 
-// import Header from "../../components/Header/Header"
 import axios from "axios"
 import { StyleMain, SectionSignup } from "./style"
 import { goToHomePage } from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { BASE_URL } from "../../constants/url"
+import { BASE_URL, TOKEN_NAME } from "../../constants/url"
 
 function SignupPage (){
     const navigate = useNavigate()
@@ -29,7 +28,7 @@ function SignupPage (){
                 password: form.password,
             }
             const response = await axios.post(`${BASE_URL}/users/signup`, body)
-            window.localStorage.setItem("TokenApi-Labeddit", response.data.token)
+            window.localStorage.setItem(TOKEN_NAME, response.data.token)
             goToHomePage(navigate)
         } catch (error) {
             console.log(error)
