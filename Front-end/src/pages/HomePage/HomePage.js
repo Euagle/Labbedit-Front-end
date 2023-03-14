@@ -73,12 +73,14 @@ export default function HomePage() {
       <h1>Posts</h1>
 
       <section>
-        {posts.map((post) => {
+        { fetchPosts.map((post) => {
           return <PostCard key={post.id} post={post} />;
         })}
       </section>
     </main>
   );
+
+  
 }
 
 
