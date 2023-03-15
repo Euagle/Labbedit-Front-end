@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { TOKEN_NAME } from "../constants/url";
 import { goToLoginPage } from "../routes/coordinator";
+import { StyledCheckout } from "./styles";
+
 
 export default function Header() {
     const navigate = useNavigate();
@@ -11,8 +13,8 @@ export default function Header() {
     };
 
     return (
-        <header>
+        <StyledCheckout>
             <button onClick={logout}>Deslogar</button>
-        </header>
+        </StyledCheckout>
     );
 }

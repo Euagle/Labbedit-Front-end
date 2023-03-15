@@ -5,6 +5,7 @@ import { goToHomePage } from "../../routes/coordinator"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { BASE_URL, TOKEN_NAME } from "../../constants/url"
+// import OpenLogin from "../../components/OpenLogin"
 
 function SignupPage (){
     const navigate = useNavigate()
@@ -39,6 +40,8 @@ function SignupPage (){
         <>
         {/* <Header/> */}
         <StyleMain>
+        {/* <OpenLogin/> */}
+
             <SectionSignup>
                 <div>
                     <h1>Olá, boas vindas ao LabEddit ;D</h1>
@@ -46,7 +49,10 @@ function SignupPage (){
                 <div>
                     <input value={form.name} name="name" onChange={onChangeForm} placeholder="Apelido"/>
                     <input value={form.email} name="email" onChange={onChangeForm} placeholder="E-mail"/>
-                    <input value={form.password} name="password" onChange={onChangeForm} placeholder="Senha"/>         
+                    <input value={form.password} name="password"
+                                    type={ "password"}
+
+                    onChange={onChangeForm} placeholder="Senha"/>         
                 </div>
                 <div>
                     <p>Ao continuar, você concorda com o nosso <a href="#">Contrato de usuário</a> e nossa <a href="#">Politica de Privacidade</a></p>

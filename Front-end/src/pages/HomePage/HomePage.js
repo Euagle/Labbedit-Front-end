@@ -2,10 +2,11 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header";
-import PostCard from "../../components/PlaylistCard";
+import PostCard from "../../components/PostsCard";
 import { BASE_URL, TOKEN_NAME } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { goToLoginPage } from "../../routes/coordinator";
+import {   Post, PostCardd , PostsStyles} from './styled'
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function HomePage() {
   const { posts, fetchPosts } = context;
 
   const [isLoading, setIsLoading] = useState(false)
-  const [postsName, setPostsName] = useState("")
+  const [content, setContent] = useState("")
 
   useEffect(() => {
     const token = window.localStorage.getItem(TOKEN_NAME);
@@ -41,12 +42,12 @@ export default function HomePage() {
       };
 
       const body = {
-        name: postsName
+         content
       }
 
       await axios.post(BASE_URL + "/posts", body, config);
 
-      setPostsName("");
+      setContent("");
       setIsLoading(false)
       fetchPosts()
     } catch (error) {
@@ -55,33 +56,37 @@ export default function HomePage() {
     }
   };
 
+  console.log(posts)
   return (
     <main>
-      <Header />
-      <section>
-        <form onSubmit={createPosts}>
-          <h1>Criar post</h1>
-          <section>
-            <label>Nome</label>
-            <input value={postsName} onChange={(e) => setPostsName(e.target.value)} />
-          </section>
-          <button disabled={isLoading}>Criar</button>
-        </form>
-      </section>
+      <Header/>
+          <PostsStyles>
+        <section >
+          <div >
+            <input
+              type="text"
+              placeholder="Escreva seu post..."
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+            />
+          </div>
+          <button type="submit" onClick={createPosts}>
+            Postar
+          </button>
+        </section>
+        <hr />
+        <section className="container-posts">
+          {posts.Post?.map((post) => {
+              return <PostCard  key={post.id} post={post} />;
+            })
+            .reverse()}
+        </section>
+      </PostsStyles>
+    
 
-      <hr />
-      <h1>Posts</h1>
 
-      <section>
-        { posts.map((post) => {
-          return <PostCard key={post.id} post={post} />;
-        })}
-      </section>
     </main>
   );
 
   
 }
-
-
-

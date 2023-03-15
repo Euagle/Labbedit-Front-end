@@ -17,3 +17,11 @@ export const goToDetailsPage = (navigate, recipeId) => {
 export const goToCreateRecipePage = (navigate) => {
   navigate("/recipe/new");
 };
+
+export const goToCreateCommentPage = (navigate) => {
+  navigate("/comment");
+};
+
+// export const goToCreateCommentPage = (navigate, id) => {
+//   navigate(`/comment/${id}`);
+// };
