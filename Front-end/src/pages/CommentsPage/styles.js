@@ -43,7 +43,7 @@ order: 0;
 flex-grow: 0;
 }
 h2{
-    width: 335px;
+    width: 95px;
 height: 69px;
 
 font-family: 'IBM Plex Sans';
@@ -73,6 +73,8 @@ span{
 right: 29.29%;
 top: 50%;
 bottom: -20.71%;
+margin-top: 30px;
+
 
 // background: #6F6F6F;
 // transform: rotate(-45deg);
@@ -86,8 +88,44 @@ h3{
 
 }
 h5{
-    margin-left: 31px;
+    margin-bottom: -112px;
+    margin-top: -145px;
+    margin-left: 74px;    
+}
+input{
+    width: 364px;
+    height: 131px;
+    left: 30px;
+    top: 301px;
     
+    background: #EDEDED;
+    border-radius: 12px;
+  }
+}
+button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 145px;
+    
+
+    width: 364px;
+    height: 47px;
+    left: 30px;
+    top: 440px;
+    
+    background: linear-gradient(90deg, #FF6489 0%, #F9B24E 100%), #4088CB;
+    border-radius: 12px;q
 }
 
+`
+
+export const IconComment= styled.div
+`
+img{
+
+    margin-bottom: -112px;
+    margin-left: 29px;
+}
 `

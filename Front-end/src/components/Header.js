@@ -14,7 +14,7 @@ export default function Header() {
 
     return (
         <StyledCheckout>
-            <button onClick={logout}>Deslogar</button>
+            <button onClick={logout}>Logout</button>
         </StyledCheckout>
     );
 }

@@ -106,7 +106,9 @@ export const PostsStyles = styled.div`
     }
     button {
       height: 3.188rem;
-      width: 22.438rem;
+      width: 25.2rem;
+      margin-top: 10px;
+
       border-radius: 12px;
       background: rgb(255, 100, 137);
       background: linear-gradient(
@@ -135,4 +137,11 @@ export const PostsStyles = styled.div`
 //     gap: 10px;
 //     width: 22.438rem;
 //   }
-`;
+`
+export const PostBox = styled.div`
+width: 395px;
+height: 131px;
+left: 30px;
+top: 301px;
+background: rgb(237, 237, 237);
+border-radius: 12px;`

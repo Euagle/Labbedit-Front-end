@@ -6,7 +6,7 @@ export const StyledEntrar = styled.header`
   justify-content: center;
   div {
     background-color: #ededed;
-    width: 100vw;
+    width: 100vh;
     height: 50px;
     display: flex;
     position: absolute;
@@ -27,6 +27,8 @@ export const StyledEntrar = styled.header`
 export const StyledCheckout = styled.header`
 
 // position: absolute;
+width: 100vh;
+
 height: 50px;
 left: 0px;
 top: 44px;
@@ -68,7 +70,7 @@ align-items: flex-start;
 padding: 9px 10px;
 gap: 18px;
 
-width: 364px;
+width: 399px;
 height: 167px;
 
 background: #FBFBFB;
@@ -79,7 +81,7 @@ border-radius: 12px;
 flex: none;
 order: 0;
 flex-grow: 0;
-margin-bottom: 161px;
+margin-bottom: 20px;
 p{
     width: 132px;
 height: 16px;
@@ -101,8 +103,8 @@ order: 0;
 flex-grow: 0;
 }
 h2{
-    width: 335px;
-height: 69px;
+  width: 182px;
+  height: 69px;
 
 font-family: 'IBM Plex Sans';
 font-style: normal;
@@ -148,4 +150,9 @@ h5{
     
 }
 
+`
+
+export const Comments = styled.div`
+margin-left: 129px;
+margin-top: -76px;
 `

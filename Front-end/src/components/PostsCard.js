@@ -2,7 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { BASE_URL, TOKEN_NAME } from "../constants/url";
 import { GlobalContext } from "../contexts/GlobalContext";
-import { BoxPost } from "./styles";
+import { BoxPost,Comments } from "./styles";
 import likes  from "../assets/Vector.png"
 import dislike  from "../assets/dislik.png"
 import comment  from "../assets/comment.png"
@@ -59,6 +59,7 @@ const comments =()=>{
 
       <h2>
         {post.content}
+
 <div>
 
         <span onClick={like} style={{ cursor: "pointer" }}>
@@ -81,13 +82,14 @@ const comments =()=>{
       </h2>
     
 
-      <div>
+      <Comments>
           <h5>
 
           <img onClick={() => goToCreateCommentPage(navigate)} src={comment} class="comment" width='30px' />
 
 {post.comments}</h5>
-            </div> 
+            </Comments> 
+            
         
       <br />
       <br />

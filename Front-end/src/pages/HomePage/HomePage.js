@@ -6,7 +6,7 @@ import PostCard from "../../components/PostsCard";
 import { BASE_URL, TOKEN_NAME } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
 import { goToLoginPage } from "../../routes/coordinator";
-import {   Post, PostCardd , PostsStyles} from './styled'
+import {   Post, PostCardd , PostsStyles, PostBox} from './styled'
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -62,14 +62,14 @@ export default function HomePage() {
       <Header/>
           <PostsStyles>
         <section >
-          <div >
+          <PostBox >
             <input
               type="text"
               placeholder="Escreva seu post..."
               value={content}
               onChange={(e) => setContent(e.target.value)}
             />
-          </div>
+          </PostBox>
           <button type="submit" onClick={createPosts}>
             Postar
           </button>

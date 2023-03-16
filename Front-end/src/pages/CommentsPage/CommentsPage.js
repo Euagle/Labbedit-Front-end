@@ -2,10 +2,10 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { BASE_URL, TOKEN_NAME } from "../../constants/url";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { BoxPost } from "./styles";
+import { BoxPost, IconComment } from "./styles";
 import likes  from "../../assets/Vector.png"
 import dislike  from "../../assets/dislik.png"
-import comment  from "../../assets/comment.png"
+import commentss  from "../../assets/comment.png"
 import { goToHomePage } from "../../routes/coordinator";
 import { useNavigate } from "react-router-dom";
 
@@ -115,14 +115,24 @@ console.log("imprimir",posts)
       </h2>
     
 
-      <div>
+      <IconComment>
           <h5>
 
-          <img src={comment} class="comment" width='30px' />
+          <img src={commentss} class="comment" width='30px' />
 
 {posts?.comments}</h5>
-            </div> 
-        
+            </IconComment> 
+            <div >
+            <input
+              type="text"
+              placeholder="Adicionar comentario..."
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
+          </div>
+          <button type="submit" onClick={createComment}>
+            Responder
+          </button>
       <br />
       <br />
       
